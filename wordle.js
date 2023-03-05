@@ -9,7 +9,7 @@ var gameOver = false;
 var wordList = [];
 var word;
 
-fetch("https://raw.githubusercontent.com/charlesreid1/five-letter-words/b45fda30524a981c73ec709618271cecfb51c361/sgb-words.txt")
+fetch("https://raw.githubusercontent.com/Adithyan-m-n/Wordle/main/words")
   .then(response => response.text())
   .then(data => {
     const lst = data.trim().split('\n');
