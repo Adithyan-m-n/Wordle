@@ -84,7 +84,7 @@ function update() {
 
 
     if (!wordList.includes(guess)) {
-        document.getElementById("answer").innerText = "Not in Word List";
+        document.getElementById("answer").innerText = "Not in Word List.Try again.";
         return;
     }
     
