@@ -1,8 +1,8 @@
-var height = 6; //number of guesses
-var width = 5; //length of the word
+var height = 6; 
+var width = 5; 
 
-var row = 0; //current guess (attempt #)
-var col = 0; //current letter for that attempt
+var row = 0; 
+var col = 0; 
 
 var gameOver = false;
 
@@ -73,7 +73,7 @@ function update() {
     let guess = "";
     document.getElementById("answer").innerText = "";
 
-    //string up the guesses into the word
+    
     for (let c = 0; c < width; c++) {
         let currTile = document.getElementById(row.toString() + '-' + c.toString());
         let letter = currTile.innerText;
@@ -88,10 +88,10 @@ function update() {
         return;
     }
     
-    //start processing guess
+    
     let correct = 0;
 
-    let letterCount = {}; //keep track of letter frequency, ex) KENNY -> {K:1, E:1, N:2, Y: 1}
+    let letterCount = {}; 
     for (let i = 0; i < word.length; i++) {
         let letter = word[i];
 
@@ -104,12 +104,12 @@ function update() {
     }
 
 
-    //first iteration, check all the correct ones first
+    
     for (let c = 0; c < width; c++) {
         let currTile = document.getElementById(row.toString() + '-' + c.toString());
         let letter = currTile.innerText;
 
-        //Is it in the correct position?
+        
         if (word[c] == letter) {
             currTile.classList.add("correct");
 
@@ -118,24 +118,24 @@ function update() {
             keyTile.classList.add("correct");
 
             correct += 1;
-            letterCount[letter] -= 1; //deduct the letter count
+            letterCount[letter] -= 1; 
         }
 
         if (correct == width) {
             gameOver = true;
-            document.getElementById("answer").innerText = "YOU WIN!";
+            document.getElementById("answer").innerText = "YOU WON!";
             document.getElementById("reset").style.display = "block";
         }
     }
 
-    //go again and mark which ones are present but in wrong position
+    
     for (let c = 0; c < width; c++) {
         let currTile = document.getElementById(row.toString() + '-' + c.toString());
         let letter = currTile.innerText;
 
-        // skip the letter if it has been marked correct
+        
         if (!currTile.classList.contains("correct")) {
-            //Is it in the word?         //make sure we don't double count
+            
             if (word.includes(letter) && letterCount[letter] > 0) {
                 currTile.classList.add("present");
                 
